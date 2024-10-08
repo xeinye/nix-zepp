@@ -12,14 +12,16 @@
     gnupg
     zsh
     pinentry_mac
+    mpv
+    python3Full
   ];
 
   casks = [
     "iterm2"
-    "visual-studio-code"
     "firefox"
     "qobuz"
     "maccy"
-    "iina"
+    "qobuz"
+    "alfred"
   ];
 }

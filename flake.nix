@@ -35,13 +35,13 @@
         nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
-            ./configuration.nix
+            ./modules/darwin
 
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.zepp = import ./home.nix;
+              home-manager.users.zepp.imports =  [ ./modules/home-manager ];
             }
 
             nix-homebrew.darwinModules.nix-homebrew
@@ -64,5 +64,8 @@
 
       darwinPackages =
         self.darwinConfigurations."iris".pkgs;
+	darwinConfigurations.default = self.darwinPackages;
+        packages.x86_64-darwin.default = self.darwinPackages;
+
     };
 }
